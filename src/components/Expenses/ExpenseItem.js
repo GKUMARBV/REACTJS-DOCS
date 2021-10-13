@@ -8,7 +8,6 @@ export default function ExpenseItem(props) {
   const data = props.data;
 
   function changeTitle() {
-    console.log("change button title !");
     setTitle("Update Title");
   }
 

@@ -1,5 +1,6 @@
 import ExpenseItem from "./components/Expenses/ExpenseItem";
 import NewExpense from "./components/NewExpense/NewExpense";
+import React, { useState } from "react";
 
 function App() {
   let data = [
@@ -20,12 +21,20 @@ function App() {
     },
   ];
 
+  const [currentData, setData] = useState(data);
+
+  const addExpenseHandler = (addExpense) => {
+    let newExpense = [];
+    newExpense.push(addExpense);
+    setData((preExpenses) => [...preExpenses, ...newExpense]);
+  };
+
   return (
     <div className="App">
-      <NewExpense />
-      {data.map((val, index) => {
-        return <ExpenseItem key={index} data={val}></ExpenseItem>;
-      })}
+      <NewExpense onAddExpense={addExpenseHandler} />
+      {currentData.map((val, index) => (
+        <ExpenseItem key={index} data={val}></ExpenseItem>
+      ))}
     </div>
   );
 }
